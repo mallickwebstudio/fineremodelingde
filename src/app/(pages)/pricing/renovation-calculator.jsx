@@ -14,8 +14,8 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog"
+import { cn, formatData } from '@/lib/utils'
 
 const iconMap = {
     kitchen: Home,
@@ -68,19 +68,46 @@ const RenovationCalculator = () => {
         }))
     }
 
-    const handleSubmit = () => {
-        const missing = Object.keys(pricingData[projectType].options).filter(
-            category => !options[category]
-        )
+    const handleSubmit = async () => {
+        try {
+            const missingField = Object.keys(pricingData[projectType].options).filter(
+                category => !options[category]
+            )
+            if (missingField.length > 0) {
+                setMissingFields(missingField)
+                setIsDialogOpen(true)
+            } else {
+                const data = {
+                    "1519457583": projectType,
+                    "746580922": size,
+                    "960018383": options.layout || "",
+                    "1898619684": options.flooring || "",
+                    "329540966": options.cabinets || "",
+                    "1227528326": options.trim || "",
+                    "253005119": options.lighting || "",
+                    "1938143290": options.backsplash || "",
+                    "633690128": options.paint || "",
+                    "1107018877": options.materials || "",
+                };
 
-        if (missing.length > 0) {
-            setMissingFields(missing)
-            setIsDialogOpen(true)
-        } else {
+                await fetch(process.env.NEXT_PUBLIC_RENOVATION_CALCULATOR_FORM_API, {
+                    method: "POST",
+                    body: await formatData(data),
+                    mode: "no-cors",
+                });
+
+                toast({
+                    title: "Renovation Estimate Submitted",
+                    description: `Your estimated cost range: $${estimatedCost[0].toLocaleString()} - $${estimatedCost[1].toLocaleString()}`,
+                })
+            }
+        } catch (error) {
+            console.error("Error:", error);
             toast({
-                title: "Renovation Estimate Submitted",
-                description: `Your estimated cost range: $${estimatedCost[0].toLocaleString()} - $${estimatedCost[1].toLocaleString()}`,
-            })
+                variant: "destructive",
+                title: "Error",
+                description: "We couldn't process your request. Please try again later.",
+            });
         }
     }
 
@@ -119,6 +146,7 @@ const RenovationCalculator = () => {
 
                 <CardContent>
                     <div className="space-y-6">
+                        {/* Project Type */}
                         <div>
                             <h3 className="h6 font-medium mb-xs flex items-center">
                                 <span><Boxes className='shrink-0 mr-2 size-lg inline' /></span>
@@ -135,6 +163,7 @@ const RenovationCalculator = () => {
                             </RadioGroup>
                         </div>
 
+                        {/* Size */}
                         <div>
                             <h3 className="h6 font-medium mb-xs flex items-center">
                                 <span><Ruler className='shrink-0 mr-2 size-lg inline' /></span>
@@ -157,10 +186,11 @@ const RenovationCalculator = () => {
                             </RadioGroup>
                         </div>
 
+                        {/* Other List Grid */}
                         <div className="grid grid-cols-2 gap-2xl">
                             {Object.entries(pricingData[projectType].options).map(([category, optionValues]) => (
                                 <div key={category}>
-                                    <h3 className="h6 font-medium mb-xs flex items-center">
+                                    <h3 className="h6 font-medium mb-xs flex items-center capitalize">
                                         <IconComponent category={category} />
                                         {category}
                                     </h3>
@@ -173,7 +203,7 @@ const RenovationCalculator = () => {
                                                 <RadioGroupItem value={option} id={`${category}-${option}`} />
                                                 <Label
                                                     htmlFor={`${category}-${option}`}
-                                                    className={options[category] && options[category] !== option ? 'text-muted-foreground' : ''}
+                                                    className={cn("capitalize cursor-pointer", options[category] && options[category] !== option ? 'text-muted-foreground' : '')}
                                                 >
                                                     {option.charAt(0).toUpperCase() + option.slice(1)}
                                                 </Label>
@@ -182,7 +212,7 @@ const RenovationCalculator = () => {
                                     </RadioGroup>
                                     {options[category] && (
                                         <div className="mt-1 text-xs text-muted-foreground">
-                                            <CheckCheck className='mr-1 inline shrink-0 size-base text-green-600'/> {optionValues[options[category]].perk}
+                                            <CheckCheck className='mr-1 inline shrink-0 size-base text-green-600' /> {optionValues[options[category]].perk}
                                         </div>
                                     )}
                                 </div>

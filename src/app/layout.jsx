@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 import localFont from "next/font/local";
 import Script from 'next/script';
+import { Toaster } from '@/components/ui/toaster';
 
 // Rubik font configuration
 const rubik = localFont({
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
                 <Navbar />
                 {children}
                 <Footer />
+                <Toaster />
             </body>
         </html>
     );
