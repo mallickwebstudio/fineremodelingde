@@ -1,4 +1,5 @@
 import { Boxes, BrickWall, Handshake } from "lucide-react";
+import Link from "next/link";
 
 export default function HowItWorks() {
     return (
@@ -12,7 +13,7 @@ export default function HowItWorks() {
                 </p>
 
                 <div className="mt-2xl grid gap-base md:grid-cols-3">
-                    <div className="relative p-base rounded-md border">
+                    <div className="relative p-base rounded-md border h-fit">
                         <div>
                             <Handshake className="text-primary size-block" />
                         </div>
@@ -23,26 +24,26 @@ export default function HowItWorks() {
                             <li>Visualize</li>
                         </ul>
                         <p>
-                            Looking for a reliable contractor with extensive experience for your next project? At Fine Remodeling, we stand by the excellence of our work and provide clients with personalized attention based on their specific needs. The first step in any project is a review of surrounding thoughts. If your project needs professional construction services see the Services page, fill out the Contact Us form, and we'll discuss your project details.
+                            The first step in any project is a review of surrounding thoughts. If your project needs professional construction services see the <Link className="text-link" href="/services">Services page</Link>, fill out the <Link className="text-link" href="/contact-us">Contact Us</Link> form, and we'll discuss your project details.
                         </p>
                     </div>
 
-                    <div className="relative p-base rounded-md border">
+                    <div className="relative p-base rounded-md border h-fit">
                         <div>
                             <Boxes className="text-primary size-block" />
                         </div>
-                        <h3>PROJECT DEVELOPMENT</h3>
+                        <h3 className="my-sm">PROJECT DEVELOPMENT</h3>
                         <ul className="my-sm list-disc list-inside text-muted-foreground">
                             <li>Scope of Work</li>
                             <li>Materials</li>
                             <li>Contract</li>
                         </ul>
                         <p>
-                            When you’re looking for top quality work, Fine Remodeling is here to help. Our construction professionals are available to provide a wide range of customizable options, all guaranteed to meet and exceed expectations. Contact our office today to learn more about this and our other available services.
+                            Our construction professionals are available to provide a wide range of customizable options, all guaranteed to meet and exceed expectations. <Link className="text-link" href="/contact-us">Contact our office</Link> today to learn more about this and our other available services.
                         </p>
                     </div>
 
-                    <div className="relative p-base rounded-md border">
+                    <div className="relative p-base rounded-md border h-fit">
                         <div>
                             <BrickWall className="text-primary size-block" />
                         </div>
@@ -52,7 +53,7 @@ export default function HowItWorks() {
                             <li>Project Enhancements</li>
                         </ul>
                         <p>
-                            At Fine Remodeling, our clients are our number one priority and we go the extra mile to make sure they’re completely satisfied. We understand that the decision to renovate your kitchen is never an easy one. Whether your kitchen or Bathrooms are dated and need a simple makeover, or you are looking for a complete remodel, Fine Remodeling is your contractor. We work closely with our suppliers to ensure that we can deliver your  kitchen or Bathroom remodel on any budget
+                            At Fine Remodeling, our clients are our number one priority and we go the extra mile to make sure they’re completely satisfied. We understand that the decision to renovate your kitchen is never an easy one. Whether your kitchen or Bathrooms are dated and need a simple makeover, or you are looking for a complete remodel, Fine Remodeling is your contractor. We work closely with our suppliers to ensure that we can deliver your  kitchen or Bathroom remodel on any budget.
                         </p>
                     </div>
                 </div>

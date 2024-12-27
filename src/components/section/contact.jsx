@@ -20,7 +20,7 @@ export default function Contact({ className, heading, subTitle }) {
                 
                 {/* <!-- Calendly inline widget begin --> */}
                 <div className="border rounded-md">
-                    <div className="calendly-inline-widget min-w-[320px] h-[1000]" data-url="https://calendly.com/mallickwebstudio/30min?primary_color=0077b3" />
+                    <div className="calendly-inline-widget min-w-[320px] h-[1000px]" data-url="https://calendly.com/mallickwebstudio/30min?primary_color=0077b3" />
                     <Script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async />
                 </div>
             </div>

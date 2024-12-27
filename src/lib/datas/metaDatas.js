@@ -1,14 +1,16 @@
 
 export const siteConfig = {
     name: "fineremodeling",
+    nameCapitalize: "Fine Remodeling",
     title: "FineRemodeling - Fullstack Development Services",
     description: "Your trusted partner for building powerful and scalable fullstack websites with Next.js.",
     url: "https://mallickwebstudio.com",
     baseUrl: "https://mallickwebstudio.com",
     ogImage: "https://mallickwebstudio.com/og.jpg",
     links: {
-        instagram: "https://instagram.com/mallickwebstudio_",
-        github: "https://github.com/mallickwebstudio/",
+        facebook: "https://www.facebook.com/fineremodelingde",
+        instagram: "https://www.instagram.com/fineremodeling",
+        youtube: "https://www.youtube.com/channel/UCrarsIpj3H7VG48HdWW7hyQ",
     },
     owner: "Salman Mallick"
 }

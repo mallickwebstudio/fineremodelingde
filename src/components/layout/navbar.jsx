@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AlignRight, X } from "lucide-react";
+import { AlignRight, Mail, Phone, X } from "lucide-react";
 import { useState } from "react";
 import { siteConfig } from "@/lib/datas/metaDatas";
 import { navigationLinks } from "@/lib/datas/const";
@@ -85,8 +85,15 @@ export default function Navbar() {
         {/* Theme Toggle Button (Desktop Only) */}
         {/* <ThemeToggleButton className="hidden md:block justify-self-end" /> */}
         <div className="md:col-span-2 text-sm">
-          <a className="text-link" href="tel:+13026350375">+1 302-635-0375</a><br />
-          <a className="text-link" href="mailto:randy@fineremodelingde.com">randy@fineremodelingde.com</a>
+          <span className="flex items-center">
+            <Phone className="inline mr-2 size-sm" />
+            <a className="text-link" href="tel:+13026350375">+1 302-635-0375</a><br />
+          </span>
+
+          <span className="flex items-center">
+            <Mail className="inline mr-2 size-sm" />
+            <a className="text-link" href="mailto:randy@fineremodelingde.com">randy@fineremodelingde.com</a>
+          </span>
         </div>
       </nav>
     </header>
