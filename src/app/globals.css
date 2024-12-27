@@ -94,8 +94,16 @@
     @apply scroll-m-20 text-xl font-semibold tracking-tight;
   }
 
+  h4, .h5 {
+    @apply scroll-m-20 text-lg font-semibold tracking-tight;
+  }
+
+  h4, .h6 {
+    @apply scroll-m-20 text-base font-semibold tracking-tight;
+  }
+
   .text-link {
-    @apply hover:text-sky-500 text-sky-700 dark:hover:text-sky-400 hover:underline;
+    @apply hover:text-sky-600 text-sky-800 dark:hover:text-sky-400 hover:underline;
   }
 
   .section-wrapper {

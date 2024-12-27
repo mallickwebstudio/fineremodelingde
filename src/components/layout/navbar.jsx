@@ -85,13 +85,13 @@ export default function Navbar() {
         {/* Theme Toggle Button (Desktop Only) */}
         {/* <ThemeToggleButton className="hidden md:block justify-self-end" /> */}
         <div className="md:col-span-2 text-sm">
-          <span className="flex items-center">
-            <Phone className="inline mr-2 size-sm" />
+          <span className="flex items-center whitespace-nowrap">
+            <Phone className="inline mr-2 size-sm shrink-0" />
             <a className="text-link" href="tel:+13026350375">+1 302-635-0375</a><br />
           </span>
 
-          <span className="flex items-center">
-            <Mail className="inline mr-2 size-sm" />
+          <span className="flex items-center whitespace-nowrap">
+            <Mail className="inline mr-2 size-sm shrink-0" />
             <a className="text-link" href="mailto:randy@fineremodelingde.com">randy@fineremodelingde.com</a>
           </span>
         </div>
