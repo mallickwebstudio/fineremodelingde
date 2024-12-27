@@ -90,11 +90,15 @@ const RenovationCalculator = () => {
                     "1107018877": options.materials || "",
                 };
 
-                await fetch(process.env.NEXT_PUBLIC_RENOVATION_CALCULATOR_FORM_API, {
+                const response = await fetch(process.env.NEXT_PUBLIC_RENOVATION_CALCULATOR_FORM_API, {
                     method: "POST",
                     body: await formatData(data),
                     mode: "no-cors",
                 });
+                
+                console.log("Env~", process.env.NEXT_PUBLIC_RENOVATION_CALCULATOR_FORM_API)
+
+                console.log("Res~", response)
 
                 toast({
                     title: "Renovation Estimate Submitted",
