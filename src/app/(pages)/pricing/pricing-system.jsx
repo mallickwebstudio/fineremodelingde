@@ -16,7 +16,7 @@ export default function PricingSystem() {
                         <div className="grid gap-base md:grid-cols-3 lg:col-span-3">
                             {[kitchen.sizes.small, kitchen.sizes.medium, kitchen.sizes.large].map((item) => (
                                 <div className="p-sm border rounded-md bg-blue-50" key={item.description + "Kitchen"}>
-                                    <h3 className="h6">{item.range[0] + " - " + item.range[1]}</h3>
+                                    <h3 className="h6">{"$" + item.range[0] + " - $" + item.range[1]}</h3>
                                     <p>{item.description}</p>
                                 </div>
                             ))}
@@ -60,7 +60,7 @@ export default function PricingSystem() {
                         <div className="grid gap-base md:grid-cols-3 lg:col-span-3">
                             {[bathroom.sizes.small, bathroom.sizes.medium, bathroom.sizes.large].map((item) => (
                                 <div className="p-sm border rounded-md bg-blue-50" key={item.description + "Bathroom"}>
-                                    <h3 className="h6">{item.range[0] + " - " + item.range[1]}</h3>
+                                    <h3 className="h6">{"$" +item.range[0] + " - $" + item.range[1]}</h3>
                                     <p>{item.description}</p>
                                 </div>
                             ))}
@@ -104,7 +104,7 @@ export default function PricingSystem() {
                         <div className="grid gap-base md:grid-cols-3 lg:col-span-3">
                             {[addition.sizes.small, addition.sizes.medium, addition.sizes.large].map((item) => (
                                 <div className="p-sm border rounded-md bg-blue-50" key={item.name + "Addition"}>
-                                    <h3 className="h6">{item.range[0] + " - " + item.range[1]}</h3>
+                                    <h3 className="h6">{"$" +item.range[0] + " - $" + item.range[1]}</h3>
                                 </div>
                             ))}
                         </div>

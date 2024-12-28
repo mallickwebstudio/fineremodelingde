@@ -3,17 +3,17 @@ import Link from "next/link";
 
 export default function HowItWorks() {
     return (
-        <section id="how-it-works">
+        <section className="bg-section-svg-primary" id="how-it-works">
             <div className="section-wrapper">
                 <h2>
-                    How It Works
+                <span className="text-primary underline">How</span> It Works
                 </h2>
                 <p className="-mt-base mx-auto md:text-center text-muted-foreground md:w-2/3">
                     Our three steps process for each great success.
                 </p>
 
                 <div className="mt-2xl grid gap-base md:grid-cols-3">
-                    <div className="relative p-base rounded-md border h-fit">
+                    <div className="relative p-base bg-background rounded-md border h-fit">
                         <div>
                             <Handshake className="text-primary size-block" />
                         </div>
@@ -28,7 +28,7 @@ export default function HowItWorks() {
                         </p>
                     </div>
 
-                    <div className="relative p-base rounded-md border h-fit">
+                    <div className="relative p-base bg-background rounded-md border h-fit">
                         <div>
                             <Boxes className="text-primary size-block" />
                         </div>
@@ -43,7 +43,7 @@ export default function HowItWorks() {
                         </p>
                     </div>
 
-                    <div className="relative p-base rounded-md border h-fit">
+                    <div className="relative p-base bg-background rounded-md border h-fit">
                         <div>
                             <BrickWall className="text-primary size-block" />
                         </div>

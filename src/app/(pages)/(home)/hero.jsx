@@ -33,12 +33,12 @@ export default function Hero() {
                             <span className="text-primary/ underline">brass tacks!</span>
                         </h1>
 
-                        <p className="md:w-4/5 text-muted-foreground">
-
+                        <p className="my-sm md:w-4/5 text-lg text-background/80">
+                            Transforming homes for over a decade with custom renovations, from kitchens to whole-home makeovers—tailored to your style and budget.
                         </p>
                         <div className="mt-base">
                             <Link className={buttonVariants()} href="/contact">
-                                Cleak Here to Schedule a Call
+                                Click Here to Schedule a Call
                             </Link>
                         </div>
                     </div>
