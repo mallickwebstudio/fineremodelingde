@@ -17,7 +17,7 @@ export default function WhatWeDo() {
                 <div className="bg-neutral-950 text-background p-6 sm:py-12 md:p-16 lg:p-20 md:order-1">
                     <Image
                         className='w-full aspect-square object-cover rounded-md'
-                        src="/images/person/suite-selfie.png"
+                        src="/images/person/10.png"
                         width={200}
                         height={200}
                         alt='Group Image'

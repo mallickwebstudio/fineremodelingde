@@ -85,10 +85,19 @@ export default function Footer() {
               <div className="mt-base mb-xs font-bold">Additional Information</div>
               <ul>
                 <li>
-                  <Link className="text-link" href="#">Subcontractor Resources</Link>
+                  <Link className="text-link" href="#">
+                    Subcontractor Resources
+                  </Link>
                 </li>
                 <li>
-                  <Link className="text-link" href="/pricing/#renovation-cost-calculator">Renovation Cost Calculator</Link>
+                  <Link className="text-link" href="/pricing/#renovation-cost-calculator">
+                    Renovation Cost Calculator
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-link" href="#">
+                    Careers
+                  </Link>
                 </li>
               </ul>
             </div>

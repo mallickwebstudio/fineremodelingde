@@ -20,10 +20,31 @@ export default function WhoWeAre() {
                     </span>
                 </div>
 
-                <div className="bg-neutral-950 text-background p-6 sm:py-12 md:p-16 lg:p-20">
+                <div className="bg-neutral-950 text-background p-6 sm:py-12 md:p-16 lg:p-20 grid gap-base grid-cols-2">
                     <Image
-                        className='w-full aspect-square object-cover rounded-md'
-                        src="/images/person/group-one.png"
+                        className='w-full object-cover rounded-md'
+                        src="/images/person/8.png"
+                        width={200}
+                        height={200}
+                        alt='Group Image'
+                    />
+                    <Image
+                        className='w-full object-cover rounded-md'
+                        src="/images/person/10.png"
+                        width={200}
+                        height={200}
+                        alt='Group Image'
+                    />
+                    <Image
+                        className='w-full object-cover rounded-md'
+                        src="/images/person/7.png"
+                        width={200}
+                        height={200}
+                        alt='Group Image'
+                    />
+                    <Image
+                        className='w-full object-cover rounded-md'
+                        src="/images/person/9.png"
                         width={200}
                         height={200}
                         alt='Group Image'

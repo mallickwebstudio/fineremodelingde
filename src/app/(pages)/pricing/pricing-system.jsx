@@ -16,7 +16,9 @@ export default function PricingSystem() {
                         <div className="grid gap-base md:grid-cols-3 lg:col-span-3">
                             {[kitchen.sizes.small, kitchen.sizes.medium, kitchen.sizes.large].map((item) => (
                                 <div className="p-sm border rounded-md bg-blue-50" key={item.description + "Kitchen"}>
-                                    <h3 className="h6">{"$" + item.range[0] + " - $" + item.range[1]}</h3>
+                                    <h3 className="mb-xs text-lg text-primary">
+                                        {"$" + item.range[0] + " - $" + item.range[1]}
+                                    </h3>
                                     <p>{item.description}</p>
                                 </div>
                             ))}
@@ -31,7 +33,7 @@ export default function PricingSystem() {
                     <div className="mt-xl grid gap-base sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {Object.entries(kitchen.options).map(([category, tiers]) => (
                             <div className="p-4 border rounded-md bg-cyan-50" key={category + "Kitchen"}>
-                                <h3 className="text-lg font-bold capitalize flex items-center">
+                                <h3 className="text-lg font-bold capitalize flex items-center text-primary">
                                     <IconComponent category={category} />
                                     {category}
                                 </h3>
@@ -60,7 +62,9 @@ export default function PricingSystem() {
                         <div className="grid gap-base md:grid-cols-3 lg:col-span-3">
                             {[bathroom.sizes.small, bathroom.sizes.medium, bathroom.sizes.large].map((item) => (
                                 <div className="p-sm border rounded-md bg-blue-50" key={item.description + "Bathroom"}>
-                                    <h3 className="h6">{"$" +item.range[0] + " - $" + item.range[1]}</h3>
+                                    <h3 className="mb-xs text-lg text-primary">
+                                        {"$" + item.range[0] + " - $" + item.range[1]}
+                                    </h3>
                                     <p>{item.description}</p>
                                 </div>
                             ))}
@@ -75,7 +79,7 @@ export default function PricingSystem() {
                     <div className="mt-xl grid gap-base sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {Object.entries(bathroom.options).map(([category, tiers], i) => (
                             <div className="p-4 border rounded-md bg-cyan-50" key={category + "Bathroom"}>
-                                <h3 className="text-lg font-bold capitalize flex items-center">
+                                <h3 className="text-lg font-bold capitalize flex items-center text-primary">
                                     <IconComponent category={category} />
                                     {category}
                                 </h3>
@@ -104,7 +108,9 @@ export default function PricingSystem() {
                         <div className="grid gap-base md:grid-cols-3 lg:col-span-3">
                             {[addition.sizes.small, addition.sizes.medium, addition.sizes.large].map((item) => (
                                 <div className="p-sm border rounded-md bg-blue-50" key={item.name + "Addition"}>
-                                    <h3 className="h6">{"$" +item.range[0] + " - $" + item.range[1]}</h3>
+                                    <h3 className="mb-xs text-lg text-primary">
+                                        {"$" + item.range[0] + " - $" + item.range[1]}
+                                    </h3>
                                 </div>
                             ))}
                         </div>
@@ -118,7 +124,7 @@ export default function PricingSystem() {
                     <div className="mt-xl grid gap-base sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {Object.entries(addition.options).map(([category, tiers], i) => (
                             <div className="p-4 border rounded-md bg-cyan-50" key={category + "Addition"}>
-                                <h3 className="text-lg font-bold capitalize flex items-center">
+                                <h3 className="text-lg font-bold capitalize flex items-center text-primary">
                                     <IconComponent category={category} />
                                     {category}
                                 </h3>

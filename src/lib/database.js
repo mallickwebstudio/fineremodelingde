@@ -436,3 +436,118 @@ export const pricingData = {
   },
 };
 
+
+
+
+
+
+
+
+export const services = [
+  {
+    title: "Kitchens",
+    description: [
+      <p>The kitchen is a crucial part of any home. From being a space for cooking meals to entertaining guests, a kitchen is heavily utilized.</p>,
+      <p>At Fine Remodeling, we specialize in design-build kitchen remodels. We are diligent in ensuring that not only is our work to industry standards, but also to our client's standards.</p>,
+      <p>From coming on-site to inspect the space before construction begins to traveling with clients for picking cabinets, appliances, and so on, we are dedicated to delivering quality projects.</p>
+    ],
+    image: "kitchen-remodel.jpg"
+  },
+  {
+    title: "Bathrooms",
+    description: [
+      <p>The bathroom is a place to get ready for the day as well as a space to unwind.</p>,
+      <p>Keeping the bathroom up to date and aligned with the homeowner’s wants and needs is crucial to getting quality time out of it.</p>,
+      <p>We specialize in design-build bathroom remodels and have the experience and knowledge to breathe new life into a bathroom.</p>
+    ],
+    image: "bathroom-remodel.jpg"
+  },
+  {
+    title: "Additions",
+    description: [
+      <p>Sometimes, the layout of a home simply isn't spacious enough.</p>,
+      <p>If it's time for more space, whether to fit a kitchen, bath, etc., we're here to help.</p>
+    ],
+    image: "home-additions.jpg"
+  },
+  {
+    title: "Renderings",
+    description: [
+      <p>The finished product can be hard to visualize.</p>,
+      <p>Ask to have some renderings done!</p>
+    ],
+    image: "renderings.jpg"
+  },
+  {
+    title: "Basements",
+    description: [
+      <p>The basement is an undervalued part of the home.</p>,
+      <p>Finishing the basement offers the great benefit of an already enclosed space.</p>,
+      <p>We'll build it to fit and you can enjoy more of the house you love.</p>
+    ],
+    image: "basement-remodel.jpg"
+  },
+  {
+    title: "Panoramic Doors",
+    description: [
+      <p>Do you want to have a fresh-air space?</p>,
+      <p>The folding and sliding option by Panoramic Doors can't be beat.</p>,
+      <p>With the screen option you can transform your indoor space to an outdoor space.</p>
+    ],
+    image: "panoramic-doors.jpg"
+  },
+  {
+    title: "Onyx Shower Systems",
+    description: [
+      <p>Do you want to stay away from tile and grout lines?</p>,
+      <p>The stone dust and resin options by Onyx Collection provide versatility with finish options.</p>,
+      <p>Replacing an existing shower with a new base, solid walls (no grout), and a frameless glass door will typically cost around $10k-12k.</p>
+    ],
+    image: "onyx-shower-systems.jpg"
+  },
+  {
+    title: "Custom Closet Spaces",
+    description: [
+      <p>Need custom storage options?</p>,
+      <p>We can build what you need.</p>
+    ],
+    image: "custom-closets.jpg"
+  },
+  {
+    title: "Tempered Glass",
+    description: [
+      <p>We source and install our own shower enclosure glass which you'll find is unique to general contractors.</p>,
+      <p>Have your old dirty shower glass replaced, install frameless glass on an already completed shower area.</p>
+    ],
+    image: "tempered-glass.jpg"
+  },
+  {
+    title: "Porcelain Panels",
+    description: [
+      <p>This west coast trend is making its way to the east coast.</p>,
+      <p>Luckily, we have the equipment and training for the proper fabrication & installation methods needed to deal with such an exquisite product.</p>
+    ],
+    image: "porcelain-panels.jpg"
+  },
+  {
+    title: "Heated Floors",
+    description: [
+      <p>In our area winters are mild. Although they aren't necessary, heated floors sure are comfy.</p>,
+      <p>We use Schluter's heat cable system with touch screen thermostats.</p>
+    ],
+    image: "heated-floors.jpg"
+  },
+  {
+    title: "Other Projects",
+    description: [
+      <p>Is there somewhere else in the home that needs work?</p>,
+      <p>We are a licensed general contractor that can take on other projects within the home.</p>,
+      <ul className="list-disc list-inside">
+        <li>Front door replacement</li>
+        <li>Front porch build/renovation</li>
+        <li>Laundry room renovation</li>
+      </ul>
+    ],
+    image: "other-projects.jpg"
+  },
+];

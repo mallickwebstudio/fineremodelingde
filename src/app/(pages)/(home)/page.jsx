@@ -1,9 +1,9 @@
 import Contact from "@/components/section/contact";
 import FAQ from "./faq";
 import Hero from "./hero";
-import HowItWorks from "./how-it-works";
 import WhoWeAre from "./who-we-are";
 import WhatWeDo from "./what-we-do";
+import Method from "@/components/section/method";
 
 export default function page() {
   return (
@@ -11,7 +11,7 @@ export default function page() {
       <Hero />
       <WhoWeAre />
       <WhatWeDo />
-      <HowItWorks />
+      <Method />
       <FAQ />
       <Contact />
     </main>

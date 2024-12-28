@@ -117,7 +117,7 @@ const RenovationCalculator = () => {
     )
 
     return (
-        <section id='renovation-cost-calculator'>
+        <section className='bg-section-secondary' id='renovation-cost-calculator'>
             <div className="section-wrapper">
                 <div className="grid gap-xl lg:grid-cols-7">
                     <Card className="lg:col-span-5">
