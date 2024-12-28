@@ -26,7 +26,7 @@ export default function Footer() {
                 <span className="sr-only">{siteConfig.name}</span>
               </Link>
 
-              <p >
+              <div>
                 <span>
                   Delaware Real Estate Answers LLC DBA <br />
                 </span>
@@ -51,7 +51,7 @@ export default function Footer() {
                   <Mail className="inline mr-2 size-base shrink-0" />
                   <a className="text-link" href="mailto:randy@fineremodelingde.com">randy@fineremodelingde.com</a>
                 </span>
-              </p>
+              </div>
 
               <div className="flex gap-base">
                 <Link className={cn(buttonVariants({ variant: "outline", size: "icon" }), "aspect-square")} href={siteConfig.links.facebook}>
@@ -86,6 +86,9 @@ export default function Footer() {
               <ul>
                 <li>
                   <Link className="text-link" href="#">Subcontractor Resources</Link>
+                </li>
+                <li>
+                  <Link className="text-link" href="/pricing/#renovation-cost-calculator">Renovation Cost Calculator</Link>
                 </li>
               </ul>
             </div>

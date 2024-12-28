@@ -17,7 +17,7 @@ export default function Contact({ className, heading, subTitle }) {
                         To contact us, schedule a phone consultation via our calendar below, which will be sent to one of our representatives.
                     </p>
                 </div>
-                
+
                 {/* <!-- Calendly inline widget begin --> */}
                 <div className="border rounded-md">
                     <div className="calendly-inline-widget min-w-[320px] h-[1000px]" data-url="https://calendly.com/mallickwebstudio/30min?primary_color=0077b3" />

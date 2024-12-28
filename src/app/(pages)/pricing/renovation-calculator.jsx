@@ -1,12 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { pricingData } from './utils/pricingData'
+import { pricingData } from '@/lib/database'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Home, Bath, PlusSquare, Ruler, Paintbrush, Lightbulb, Grid, Scissors, Package, DollarSign, Boxes, Check, CheckCheck, Grid2X2 } from 'lucide-react'
+import { Home, Bath, PlusSquare, Ruler, Package, DollarSign, Boxes, CheckCheck, Grid2X2 } from 'lucide-react'
 import { toast } from '@/hooks/use-toast'
 import {
     Dialog,
@@ -15,27 +15,8 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import { cn, formatData } from '@/lib/utils'
+import { cn, formatData, IconComponent } from '@/lib/utils'
 
-const iconMap = {
-    kitchen: Home,
-    bathroom: Bath,
-    addition: PlusSquare,
-    layout: Grid,
-    flooring: Ruler,
-    cabinets: Package,
-    trim: Scissors,
-    lighting: Lightbulb,
-    backsplash: Paintbrush,
-    paint: Paintbrush,
-    materials: Package,
-    showerBath: Bath,
-    electric: Lightbulb,
-    walls: Grid,
-    basement: Home,
-    siding: Home,
-    roof: Home,
-}
 
 const RenovationCalculator = () => {
     const [projectType, setProjectType] = useState('kitchen')
@@ -95,7 +76,7 @@ const RenovationCalculator = () => {
                     body: await formatData(data),
                     mode: "no-cors",
                 });
-                
+
                 console.log("Env~", process.env.NEXT_PUBLIC_RENOVATION_CALCULATOR_FORM_API)
 
                 console.log("Res~", response)
@@ -113,11 +94,6 @@ const RenovationCalculator = () => {
                 description: "We couldn't process your request. Please try again later.",
             });
         }
-    }
-
-    const IconComponent = ({ category }) => {
-        const Icon = iconMap[category] || Package
-        return <Icon className="w-5 h-5 mr-2 shrink-0" />
     }
 
     const RadioCard = ({ value, label, icon: Icon, onChange, checked }) => (
@@ -141,122 +117,126 @@ const RenovationCalculator = () => {
     )
 
     return (
-        <div className="flex flex-col md:flex-row gap-6 w-full max-w-6xl mx-auto p-4">
-            <Card className="flex-grow">
-                <CardHeader>
-                    <CardTitle className="h2 mb-sm">Renovation Cost Calculator</CardTitle>
-                    <CardDescription className="md:text-center">Estimate the cost of your renovation project</CardDescription>
-                </CardHeader>
+        <section id='renovation-cost-calculator'>
+            <div className="section-wrapper">
+                <div className="grid gap-xl lg:grid-cols-7">
+                    <Card className="lg:col-span-5">
+                        <CardHeader>
+                            <CardTitle className="h2 mb-sm">Renovation Cost Calculator</CardTitle>
+                            <CardDescription className="md:text-center">Estimate the cost of your renovation project</CardDescription>
+                        </CardHeader>
 
-                <CardContent>
-                    <div className="space-y-6">
-                        {/* Project Type */}
-                        <div>
-                            <h3 className="h6 font-medium mb-xs flex items-center">
-                                <span><Boxes className='shrink-0 mr-2 size-lg inline' /></span>
-                                <span>Project Type</span>
-                            </h3>
-                            <RadioGroup
-                                value={projectType}
-                                onValueChange={setProjectType}
-                                className="flex flex-col gap-2 sm:flex-row"
-                            >
-                                <RadioCard className="shrink-0" value="kitchen" label="Kitchen" icon={Home} checked={projectType === 'kitchen'} />
-                                <RadioCard className="shrink-0" value="bathroom" label="Bathroom" icon={Bath} checked={projectType === 'bathroom'} />
-                                <RadioCard className="shrink-0" value="addition" label="Addition" icon={PlusSquare} checked={projectType === 'addition'} />
-                            </RadioGroup>
-                        </div>
-
-                        {/* Size */}
-                        <div>
-                            <h3 className="h6 font-medium mb-xs flex items-center">
-                                <span><Ruler className='shrink-0 mr-2 size-lg inline' /></span>
-                                <span>Size</span>
-                            </h3>
-                            <RadioGroup
-                                value={size}
-                                onValueChange={setSize}
-                                className="flex flex-col gap-2 sm:flex-row"
-                            >
-                                {Object.entries(pricingData[projectType].sizes).map(([key, value]) => (
-                                    <RadioCard
-                                        key={key}
-                                        value={key}
-                                        label={('name' in value ? value.name : key) + (('description' in value) ? ` - ${value.description}` : '')}
-                                        icon={Grid2X2}
-                                        checked={size === key}
-                                    />
-                                ))}
-                            </RadioGroup>
-                        </div>
-
-                        {/* Other List Grid */}
-                        <div className="grid grid-cols-2 gap-2xl">
-                            {Object.entries(pricingData[projectType].options).map(([category, optionValues]) => (
-                                <div key={category}>
-                                    <h3 className="h6 font-medium mb-xs flex items-center capitalize">
-                                        <IconComponent category={category} />
-                                        {category}
+                        <CardContent>
+                            <div className="space-y-6">
+                                {/* Project Type */}
+                                <div>
+                                    <h3 className="h6 font-medium mb-xs flex items-center">
+                                        <span><Boxes className='shrink-0 mr-2 size-lg inline' /></span>
+                                        <span>Project Type</span>
                                     </h3>
                                     <RadioGroup
-                                        value={options[category] || ''}
-                                        onValueChange={(value) => handleOptionChange(category, value)}
+                                        value={projectType}
+                                        onValueChange={setProjectType}
+                                        className="flex flex-col gap-2 sm:flex-row"
                                     >
-                                        {Object.entries(optionValues).map(([option, { perk }]) => (
-                                            <div key={option} className="flex items-center space-x-2">
-                                                <RadioGroupItem value={option} id={`${category}-${option}`} />
-                                                <Label
-                                                    htmlFor={`${category}-${option}`}
-                                                    className={cn("capitalize cursor-pointer", options[category] && options[category] !== option ? 'text-muted-foreground' : '')}
-                                                >
-                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
-                                                </Label>
-                                            </div>
+                                        <RadioCard className="shrink-0" value="kitchen" label="Kitchen" icon={Home} checked={projectType === 'kitchen'} />
+                                        <RadioCard className="shrink-0" value="bathroom" label="Bathroom" icon={Bath} checked={projectType === 'bathroom'} />
+                                        <RadioCard className="shrink-0" value="addition" label="Addition" icon={PlusSquare} checked={projectType === 'addition'} />
+                                    </RadioGroup>
+                                </div>
+
+                                {/* Size */}
+                                <div>
+                                    <h3 className="h6 font-medium mb-xs flex items-center">
+                                        <span><Ruler className='shrink-0 mr-2 size-lg inline' /></span>
+                                        <span>Size</span>
+                                    </h3>
+                                    <RadioGroup
+                                        value={size}
+                                        onValueChange={setSize}
+                                        className="flex flex-col gap-2 sm:flex-row"
+                                    >
+                                        {Object.entries(pricingData[projectType].sizes).map(([key, value]) => (
+                                            <RadioCard
+                                                key={key}
+                                                value={key}
+                                                label={('name' in value ? value.name : key) + (('description' in value) ? ` - ${value.description}` : '')}
+                                                icon={Grid2X2}
+                                                checked={size === key}
+                                            />
                                         ))}
                                     </RadioGroup>
-                                    {options[category] && (
-                                        <div className="mt-1 text-xs text-muted-foreground">
-                                            <CheckCheck className='mr-1 inline shrink-0 size-base text-green-600' /> {optionValues[options[category]].perk}
-                                        </div>
-                                    )}
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
 
-            <Card className="md:w-64 md:sticky md:top-4 h-fit self-start">
-                <CardHeader>
-                    <CardTitle className="flex items-center whitespace-nowrap">
-                        <DollarSign className="w-5 h-5 mr-2 shrink-0" strokeWidth={3} />
-                        Estimated Cost
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 whitespace-nowrap">
-                    <p className="text-xl font-semibold text-muted-foreground">
-                        ${estimatedCost[0].toLocaleString()} - ${estimatedCost[1].toLocaleString()}
-                    </p>
-                    <Button onClick={handleSubmit} className="w-full">Submit</Button>
-                </CardContent>
-            </Card>
+                                {/* Other List Grid */}
+                                <div className="grid grid-cols-2 gap-2xl">
+                                    {Object.entries(pricingData[projectType].options).map(([category, optionValues]) => (
+                                        <div key={category}>
+                                            <h3 className="h6 font-medium mb-xs flex items-center capitalize">
+                                                <IconComponent category={category} />
+                                                {category}
+                                            </h3>
+                                            <RadioGroup
+                                                value={options[category] || ''}
+                                                onValueChange={(value) => handleOptionChange(category, value)}
+                                            >
+                                                {Object.entries(optionValues).map(([option, { perk }]) => (
+                                                    <div key={option} className="flex items-center space-x-2">
+                                                        <RadioGroupItem value={option} id={`${category}-${option}`} />
+                                                        <Label
+                                                            htmlFor={`${category}-${option}`}
+                                                            className={cn("capitalize cursor-pointer", options[category] && options[category] !== option ? 'text-muted-foreground' : '')}
+                                                        >
+                                                            {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                        </Label>
+                                                    </div>
+                                                ))}
+                                            </RadioGroup>
+                                            {options[category] && (
+                                                <div className="mt-1 text-xs text-muted-foreground">
+                                                    <CheckCheck className='mr-1 inline shrink-0 size-base text-green-600' /> {optionValues[options[category]].perk}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
 
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle>Missing Selections</DialogTitle>
-                        <DialogDescription>
-                            Please select options for the following categories:
-                        </DialogDescription>
-                    </DialogHeader>
-                    <ul className="list-disc pl-6">
-                        {missingFields.map((field) => (
-                            <li key={field} className="capitalize">{field}</li>
-                        ))}
-                    </ul>
-                </DialogContent>
-            </Dialog>
-        </div>
+                    <Card className="md:w-64 md:sticky md:top-4 h-fit self-start lg:col-span-2">
+                        <CardHeader>
+                            <CardTitle className="flex items-center whitespace-nowrap">
+                                <DollarSign className="w-5 h-5 mr-2 shrink-0" strokeWidth={3} />
+                                Estimated Cost
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4 whitespace-nowrap">
+                            <p className="text-xl font-semibold text-muted-foreground">
+                                ${estimatedCost[0].toLocaleString()} - ${estimatedCost[1].toLocaleString()}
+                            </p>
+                            <Button onClick={handleSubmit} className="w-full">Submit</Button>
+                        </CardContent>
+                    </Card>
+
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                        <DialogContent>
+                            <DialogHeader>
+                                <DialogTitle>Missing Selections</DialogTitle>
+                                <DialogDescription>
+                                    Please select options for the following categories:
+                                </DialogDescription>
+                            </DialogHeader>
+                            <ul className="list-disc pl-6">
+                                {missingFields.map((field) => (
+                                    <li key={field} className="capitalize">{field}</li>
+                                ))}
+                            </ul>
+                        </DialogContent>
+                    </Dialog>
+                </div>
+            </div>
+        </section>
     )
 }
 
