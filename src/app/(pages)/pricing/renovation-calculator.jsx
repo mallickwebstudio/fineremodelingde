@@ -254,7 +254,7 @@ const RenovationCalculator = () => {
                                 </div>
 
                                 {/* Other List Grid */}
-                                <div className="grid grid-cols-2 gap-2xl">
+                                <div className="grid sm:grid-cols-2 gap-2xl">
                                     {Object.entries(pricingData[projectType].options).map(([category, optionValues]) => (
                                         <div key={category}>
                                             <h3 className="h6 font-medium mb-xs flex items-center capitalize text-primary">
