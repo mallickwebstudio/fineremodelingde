@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Home, Bath, PlusSquare, Ruler, Package, DollarSign, Boxes, CheckCheck, Grid2X2 } from 'lucide-react'
+import { Home, Bath, PlusSquare, Ruler, Package, DollarSign, Boxes, Grid2X2, UserCheck2Icon, AtSign, Phone, MapPin, Pen } from 'lucide-react'
 import { toast } from '@/hooks/use-toast'
 import {
     Dialog,
@@ -15,7 +15,9 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import { cn, formatData, IconComponent } from '@/lib/utils'
+import { cn, formatData, IconComponent, RadioCard } from '@/lib/utils'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 
 const RenovationCalculator = () => {
@@ -25,6 +27,12 @@ const RenovationCalculator = () => {
     const [estimatedCost, setEstimatedCost] = useState([0, 0])
     const [isDialogOpen, setIsDialogOpen] = useState(false)
     const [missingFields, setMissingFields] = useState([])
+    const [userInfo, setUserInfo] = useState({
+        fullName: '',
+        mobileNumber: '',
+        email: '',
+        address: ''
+    });
 
     useEffect(() => {
         calculateCost()
@@ -42,6 +50,14 @@ const RenovationCalculator = () => {
         ])
     }
 
+    const handleUserInfoChange = (e) => {
+        const { name, value } = e.target;
+        setUserInfo((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
     const handleOptionChange = (category, option) => {
         setOptions(prev => ({
             ...prev,
@@ -51,14 +67,26 @@ const RenovationCalculator = () => {
 
     const handleSubmit = async () => {
         try {
-            const missingField = Object.keys(pricingData[projectType].options).filter(
-                category => !options[category]
-            )
-            if (missingField.length > 0) {
-                setMissingFields(missingField)
-                setIsDialogOpen(true)
+            // Check for missing user info fields
+            const userInfoFields = ['fullName', 'mobileNumber', 'email', 'address'];
+            const missingUserInfoFields = userInfoFields.filter(
+                (field) => !userInfo[field]
+            );
+
+            // Check for missing project options
+            const missingOptionFields = Object.keys(pricingData[projectType].options).filter(
+                (category) => !options[category]
+            );
+
+            if (missingUserInfoFields.length > 0 || missingOptionFields.length > 0) {
+                setMissingFields([...missingUserInfoFields, ...missingOptionFields]);
+                setIsDialogOpen(true);
             } else {
                 const data = {
+                    "118261346": userInfo.fullName,
+                    "375628807": userInfo.mobileNumber,
+                    "1189258044": userInfo.email,
+                    "1858428100": userInfo.address,
                     "1519457583": projectType,
                     "746580922": size,
                     "960018383": options.layout || "",
@@ -77,14 +105,10 @@ const RenovationCalculator = () => {
                     mode: "no-cors",
                 });
 
-                console.log("Env~", process.env.NEXT_PUBLIC_RENOVATION_CALCULATOR_FORM_API)
-
-                console.log("Res~", response)
-
                 toast({
                     title: "Renovation Estimate Submitted",
                     description: `Your estimated cost range: $${estimatedCost[0].toLocaleString()} - $${estimatedCost[1].toLocaleString()}`,
-                })
+                });
             }
         } catch (error) {
             console.error("Error:", error);
@@ -94,27 +118,10 @@ const RenovationCalculator = () => {
                 description: "We couldn't process your request. Please try again later.",
             });
         }
-    }
+    };
 
-    const RadioCard = ({ value, label, icon: Icon, onChange, checked }) => (
-        <div className="flex-1">
-            <RadioGroupItem
-                value={value}
-                id={value}
-                className="peer sr-only"
-                checked={checked}
-                onChange={onChange}
-            />
-            <Label
-                htmlFor={value}
-                className={`flex items-center justify-start p-4 border-2 rounded-lg cursor-pointer transition-all select-none ${checked ? 'border-primary' : 'border-gray-200 hover:border-gray-300'
-                    }`}
-            >
-                <Icon className="w-6 h-6 mr-3 shrink-0" />
-                <span className="font-medium">{label}</span>
-            </Label>
-        </div>
-    )
+
+
 
     return (
         <section className='bg-section-secondary' id='renovation-cost-calculator'>
@@ -128,9 +135,87 @@ const RenovationCalculator = () => {
 
                         <CardContent>
                             <div className="space-y-6">
+                                {/* User Info */}
+                                <div>
+                                    <h3 className="h6 font-medium mb-xs flex items-center text-primary">
+                                        <span><UserCheck2Icon className='shrink-0 mr-2 size-lg inline' /></span>
+                                        <span>User Info</span>
+                                    </h3>
+                                    <div className="mt-sm space-y-sm">
+                                        <div className="flex flex-col md:flex-row gap-base">
+                                            <div className="w-full flex-1">
+                                                <Label>
+                                                    <span className='mb-2 flex items-center gap-2'>
+                                                        <Pen className='size-base shrink-0' />
+                                                        Full Name
+                                                    </span>
+                                                    <Input
+                                                        type="text"
+                                                        name="fullName"
+                                                        placeholder="John Doe"
+                                                        value={userInfo.fullName}
+                                                        onChange={handleUserInfoChange}
+                                                        required
+                                                    />
+                                                </Label>
+                                            </div>
+                                            <div className="w-full flex-1">
+                                                <Label>
+                                                    <span className='mb-2 flex items-center gap-2'>
+                                                        <Phone className='size-base shrink-0' />
+                                                        Mobile Number
+                                                    </span>
+                                                    <Input
+                                                        type="number"
+                                                        name="mobileNumber"
+                                                        placeholder="+1 123456789"
+                                                        value={userInfo.mobileNumber}
+                                                        onChange={handleUserInfoChange}
+                                                        required
+                                                    />
+                                                </Label>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex flex-col md:flex-row gap-base">
+                                            <div className="w-full flex-1">
+                                                <Label>
+                                                    <span className='mb-2 flex items-center gap-2'>
+                                                        <AtSign className='size-base shrink-0' />
+                                                        Email
+                                                    </span>
+                                                    <Input
+                                                        type="mail"
+                                                        name="email"
+                                                        placeholder="john@mail.com"
+                                                        value={userInfo.email}
+                                                        onChange={handleUserInfoChange}
+                                                        required
+                                                    />
+                                                </Label>
+                                            </div>
+                                            <div className="w-full flex-1">
+                                                <Label>
+                                                    <span className='mb-2 flex items-center gap-2'>
+                                                        <MapPin className='size-base shrink-0' />
+                                                        Address
+                                                    </span>
+                                                    <Textarea
+                                                        name="address"
+                                                        placeholder="Northern Delaware..."
+                                                        value={userInfo.address}
+                                                        onChange={handleUserInfoChange}
+                                                        required
+                                                    />
+                                                </Label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {/* Project Type */}
                                 <div>
-                                    <h3 className="h6 font-medium mb-xs flex items-center">
+                                    <h3 className="h6 font-medium mb-xs flex items-center text-primary">
                                         <span><Boxes className='shrink-0 mr-2 size-lg inline' /></span>
                                         <span>Project Type</span>
                                     </h3>
@@ -147,7 +232,7 @@ const RenovationCalculator = () => {
 
                                 {/* Size */}
                                 <div>
-                                    <h3 className="h6 font-medium mb-xs flex items-center">
+                                    <h3 className="h6 font-medium mb-xs flex items-center text-primary">
                                         <span><Ruler className='shrink-0 mr-2 size-lg inline' /></span>
                                         <span>Size</span>
                                     </h3>
@@ -172,7 +257,7 @@ const RenovationCalculator = () => {
                                 <div className="grid grid-cols-2 gap-2xl">
                                     {Object.entries(pricingData[projectType].options).map(([category, optionValues]) => (
                                         <div key={category}>
-                                            <h3 className="h6 font-medium mb-xs flex items-center capitalize">
+                                            <h3 className="h6 font-medium mb-xs flex items-center capitalize text-primary">
                                                 <IconComponent category={category} />
                                                 {category}
                                             </h3>
@@ -181,22 +266,24 @@ const RenovationCalculator = () => {
                                                 onValueChange={(value) => handleOptionChange(category, value)}
                                             >
                                                 {Object.entries(optionValues).map(([option, { perk }]) => (
-                                                    <div key={option} className="flex items-center space-x-2">
+                                                    <div key={option} className="first:pt-0 py-1 flex items-start gap-xs">
                                                         <RadioGroupItem value={option} id={`${category}-${option}`} />
                                                         <Label
                                                             htmlFor={`${category}-${option}`}
                                                             className={cn("capitalize cursor-pointer", options[category] && options[category] !== option ? 'text-muted-foreground' : '')}
                                                         >
-                                                            {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                            <span className='block'>{option.charAt(0).toUpperCase() + option.slice(1)}</span>
+                                                            <span className='block font-normal text-muted-foreground'>{perk}</span>
+
                                                         </Label>
                                                     </div>
                                                 ))}
                                             </RadioGroup>
-                                            {options[category] && (
+                                            {/* {options[category] && (
                                                 <div className="mt-1 text-xs text-muted-foreground">
                                                     <CheckCheck className='mr-1 inline shrink-0 size-base text-green-600' /> {optionValues[options[category]].perk}
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     ))}
                                 </div>
@@ -204,7 +291,7 @@ const RenovationCalculator = () => {
                         </CardContent>
                     </Card>
 
-                    <Card className="md:w-64 md:sticky md:top-4 h-fit self-start lg:col-span-2">
+                    <Card className="md:sticky md:top-4 h-fit self-start lg:col-span-2">
                         <CardHeader>
                             <CardTitle className="flex items-center whitespace-nowrap">
                                 <DollarSign className="w-5 h-5 mr-2 shrink-0" strokeWidth={3} />
@@ -229,9 +316,12 @@ const RenovationCalculator = () => {
                             </DialogHeader>
                             <ul className="list-disc pl-6">
                                 {missingFields.map((field) => (
-                                    <li key={field} className="capitalize">{field}</li>
+                                    <li key={field} className="capitalize">
+                                        {field.replace(/([A-Z])/g, ' $1').toLowerCase()}
+                                    </li>
                                 ))}
                             </ul>
+
                         </DialogContent>
                     </Dialog>
                 </div>

@@ -23,7 +23,7 @@ export const pricingData = {
     options: {
       layout: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "Use Existing Layout"
         },
         mid: {
@@ -37,7 +37,7 @@ export const pricingData = {
       },
       flooring: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "Existing Flooring to Remain"
         },
         mid: {
@@ -51,7 +51,7 @@ export const pricingData = {
       },
       cabinets: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "30\" uppers"
         },
         mid: {
@@ -65,7 +65,7 @@ export const pricingData = {
       },
       trim: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "baseboard, window & door casing"
         },
         mid: {
@@ -79,7 +79,7 @@ export const pricingData = {
       },
       lighting: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "no changes"
         },
         mid: {
@@ -93,7 +93,7 @@ export const pricingData = {
       },
       backsplash: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "countertop material 4\" backsplash"
         },
         mid: {
@@ -108,7 +108,7 @@ export const pricingData = {
       paint: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "repair and paint where needed"
         },
         mid: {
@@ -123,7 +123,7 @@ export const pricingData = {
       materials: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "stainless steel, standard size, gooseneck faucet, pendants, granite"
         },
         mid: {
@@ -161,7 +161,7 @@ export const pricingData = {
     options: {
       layout: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "Use Existing Layout"
         },
         mid: {
@@ -176,7 +176,7 @@ export const pricingData = {
       flooring: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "LVT"
         },
         mid: {
@@ -191,7 +191,7 @@ export const pricingData = {
       cabinet: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "cabinet"
         },
         mid: {
@@ -206,7 +206,7 @@ export const pricingData = {
       showerBath: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "Thermostatic single handle control w/ shower head & tub diverter"
         },
         mid: {
@@ -221,7 +221,7 @@ export const pricingData = {
       electric: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "replace existing fixtures"
         },
         mid: {
@@ -236,7 +236,7 @@ export const pricingData = {
       walls: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "Solid surface surround w/ solid pan, existing tub, replace w/ acrylic/steel tub"
         },
         mid: {
@@ -251,7 +251,7 @@ export const pricingData = {
       paint: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "repair and paint where needed"
         },
         mid: {
@@ -266,7 +266,7 @@ export const pricingData = {
       materials: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "gooseneck faucet, pendants, granite"
         },
         mid: {
@@ -301,7 +301,7 @@ export const pricingData = {
     options: {
       layout: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "square, minimal windows"
         },
         mid: {
@@ -316,7 +316,7 @@ export const pricingData = {
       flooring: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "LVT"
         },
         mid: {
@@ -331,7 +331,7 @@ export const pricingData = {
       basement: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "slab/crawlspace"
         },
         mid: {
@@ -346,7 +346,7 @@ export const pricingData = {
       trim: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "baseboard, door, and window casing"
         },
         mid: {
@@ -361,7 +361,7 @@ export const pricingData = {
       electric: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "to code outlets/switches, center fixture, standard duplex plugs and rocker switches"
         },
         mid: {
@@ -376,7 +376,7 @@ export const pricingData = {
       siding: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "vinyl"
         },
         mid: {
@@ -391,7 +391,7 @@ export const pricingData = {
       roof: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "asphalt 30 year shingles"
         },
         mid: {
@@ -406,7 +406,7 @@ export const pricingData = {
       paint: {
 
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "Level 3 drywall finish"
         },
         mid: {
@@ -420,7 +420,7 @@ export const pricingData = {
       },
       materials: {
         basic: {
-          cost: 0,
+          cost: 100,
           perk: "Standard materials"
         },
         mid: {
